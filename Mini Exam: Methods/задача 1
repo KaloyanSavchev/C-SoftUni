@@ -1,0 +1,43 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace testsMethods
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string order = Console.ReadLine();
+            double num = double.Parse(Console.ReadLine());
+            Orders(order,num);
+           
+            
+        }
+        static void Orders(string order, double num)
+        {
+            if (order == "water")
+            {
+                double water = 1;
+                Console.WriteLine($"{(water * num):F2}");
+            }
+            else if (order == "coke")
+            {
+                double coke = 1.4;
+                Console.WriteLine($"{(coke * num):F2}");
+            }
+            else if (order == "coffee")
+            {
+                double coffee = 1.5;
+                Console.WriteLine($"{(coffee * num):F2}");
+            }
+            else if (order == "snacks")
+            {
+                double snacks = 2;
+                Console.WriteLine($"{(snacks*num):F2}");
+            }
+        }
+    }
+}
