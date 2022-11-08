@@ -1,0 +1,47 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace test_stack_and_queues
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> list = Console.ReadLine().Split().Select(int.Parse).ToList(); //първи лист за входните данни
+            List<int> finalList = Console.ReadLine().Split().Select(int.Parse).ToList(); // използваме го за запазване на числата
+            Stack<int> stack = new Stack<int>(); // стак, който използваме да 'набутваме' числата в него и
+
+            // следващите цикли и проверки са като задачата която пражихме в клас... имаме цикъл да набутаме числата,проверки ако се съдържа числото което търсим,ако нямаме елемети да изпише 0 и ако нищо не е намерено
+            for (int i = 0; i < list[0]; i++) 
+            {
+                stack.Push(finalList[i]);
+            }
+            
+            for (int i = 0; i < list[1]; i++)
+            {
+                stack.Pop();
+            }
+            if (stack.Contains(list[2]))
+            {
+                Console.WriteLine("found");
+            }
+            else
+            {
+                if (stack.Count() > 0)
+                {
+                    Console.WriteLine(stack.Min());
+                }
+
+                else
+                {
+                    Console.WriteLine("nothing found");
+                }
+                
+
+            }
+        }
+    }
+}
