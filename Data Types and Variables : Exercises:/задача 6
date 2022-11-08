@@ -1,0 +1,26 @@
+using System;
+					
+public class Program
+{
+	public static void Main()
+	{
+		int waterTank = 255;
+		int water = 0;
+		int n = int.Parse(Console.ReadLine());
+		for(int i = 0; i < n; i++)
+		{
+			int waterComing = int.Parse(Console.ReadLine());
+			if(waterComing + water > waterTank)
+            {
+            	Console.WriteLine("Insufficient capacity!");
+            }
+          else
+          {
+          water = water + waterComing;
+          }
+		}
+		Console.WriteLine(water);	
+	}
+}
+
+
