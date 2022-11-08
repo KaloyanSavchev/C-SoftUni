@@ -1,0 +1,38 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp7
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            char first = char.Parse(Console.ReadLine());
+            char second = char.Parse(Console.ReadLine());
+
+            Chars(first, second);            
+        }
+        static void Chars(char start, char end)
+        {
+            char firstChar;
+            char finalChar;
+            if (start < end)
+            {
+                firstChar = start;
+                finalChar = end;
+            }
+            else
+            {
+                finalChar = start;
+                firstChar = end;
+            }
+            for (char i = ++firstChar; i < finalChar; i++)
+            {
+                Console.Write(i + " ");
+            }            
+        }                      
+    }
+}
