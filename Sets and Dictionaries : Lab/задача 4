@@ -1,0 +1,35 @@
+using System;
+using System.Text;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace zadacha_4
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double[] numbers = Console.ReadLine()
+                .Split(' ')
+                .Select(double.Parse)
+                .ToArray();
+            Dictionary<double, int> counting = new Dictionary<double, int>();
+            foreach (var num in numbers)
+            {
+                if (counting.ContainsKey(num))
+                {
+                    counting[num]++;
+                }
+                else
+                {
+                    counting[num] = 1;
+                }
+            }
+            foreach (var num in counting)
+            {
+                Console.WriteLine($"{num.Key} - {num.Value} times");
+            }
+        }
+    }
+}
