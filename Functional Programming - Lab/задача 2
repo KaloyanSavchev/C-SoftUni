@@ -1,0 +1,18 @@
+using System;
+using System.Linq;
+
+namespace lambda1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string input = Console.ReadLine();
+            Func<string, int> num = n => int.Parse(n);
+            int[] nums = input.Split(new string[] { ", " }, StringSplitOptions.RemoveEmptyEntries).Select(num).ToArray();
+            Console.WriteLine(nums.Length);
+            Console.WriteLine(nums.Sum());
+        }
+    }
+}
+
