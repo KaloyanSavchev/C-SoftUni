@@ -1,0 +1,22 @@
+using System;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string names = Console.ReadLine();
+            string pattern = @"\b[A-Z][a-z]+ [A-Z][a-z]+";
+            MatchCollection valid = Regex.Matches(names, pattern);
+            foreach  (Match name in valid)  
+            {
+                Console.Write($"{name.Value}" + "\n");
+            }
+
+
+        }
+    }
+}
