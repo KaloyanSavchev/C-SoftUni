@@ -1,0 +1,31 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+
+namespace test_rehex_zad_1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Regex regex1 = new Regex(@"(\@(?<metal>[a-z]+)\|)");
+            Regex regex2 = new Regex(@"(\#(?<rubi>[a-z]+)\*)");
+            string text = Console.ReadLine();
+            List<string> valid = new List<string>();            
+            if (regex1.IsMatch(text))
+            {
+                Match firstMatch = regex1.Match(text);
+                string metal = firstMatch.Groups["metal"].Value;
+                valid.Add(metal);
+            }
+            if (regex2.IsMatch(text))
+            {
+                Match seceondMathc = regex2.Match(text);
+                string rubi = seceondMathc.Groups["rubi"].Value;
+                valid.Add(rubi);
+            }
+            Console.WriteLine($"Found hidden {valid[0]} and {valid[1]} in the cave.");
+        }
+    }
+}
