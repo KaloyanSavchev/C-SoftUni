@@ -1,0 +1,53 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+
+namespace ConsoleApp1
+{   class Movie
+    { 
+         public string Genre { get; set; }
+         public string Name { get; set; }
+         public string Duration { get; set; }
+        
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int N = int.Parse(Console.ReadLine());
+            List<Movie> movieList = new List<Movie>();
+            for (int i = 0; i < N; i++)
+            {
+                string[] info = Console.ReadLine().Split('|');
+                string genre = info[0];
+                string name = info[1];
+                string duration = info[2];
+                Movie movie = new Movie();
+                movie.Genre = genre;
+                movie.Name = name;
+                movie.Duration = duration;
+                movieList.Add(movie);
+            }
+            string com = Console.ReadLine();
+            if (com == "all")
+            {
+                foreach (Movie movie in movieList)
+                {
+                    Console.WriteLine(movie.Name);
+                }
+            }
+            else
+            {
+                foreach (Movie movie in movieList)
+                {
+                    if (movie.Genre == com)
+                    {
+                        Console.WriteLine(movie.Name);
+                    }
+                }
+            }
+
+        }
+    }
+}
