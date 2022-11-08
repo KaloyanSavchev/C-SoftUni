@@ -1,0 +1,36 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+namespace zadacha_1._1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {      
+            Regex regex = new Regex(@">>(?<name>[A-z]+)<<(?<price>\d+\.*\d*)!(?<count>\d+)");
+            string input;
+            double total = 0.00;
+            List<string> valid = new List<string>();
+            while ((input = Console.ReadLine()) != "Purchase")
+            {
+                if (regex.IsMatch(input))
+                {
+                    Match matchinput = regex.Match(input);
+                    string name = matchinput.Groups["name"].Value;
+                    double price = double.Parse(matchinput.Groups["price"].Value);
+                    int quantity = int.Parse(matchinput.Groups["count"].Value);
+                    valid.Add(name);
+                    total += price * quantity;
+                }                        
+            }
+            Console.WriteLine("Bought furniture:");
+            foreach (var item in valid)
+            {
+                Console.WriteLine(item);
+            }
+            Console.WriteLine($"Total money spent: {total:f2}");
+            
+        }
+    }
+}
