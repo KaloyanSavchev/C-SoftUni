@@ -1,0 +1,35 @@
+using System;
+using System.Numerics;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions; 
+namespace zadachi_za_uprajnenie
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string input = Console.ReadLine();
+            string[] command = Console.ReadLine().Split('|').ToArray();
+            
+            while (command[0] != "Decode")
+            {
+                if (command[0] == "Move")
+                {
+                    input = input.Remove(0, int.Parse(command[1])) + input.Substring(0, int.Parse(command[1]));
+                }
+                if (command[0] == "Insert")
+                {
+                    input = input.Insert(int.Parse(command[1]), command[2]);
+                }
+                if (command[0] == "ChangeAll")
+                {
+                    input = input.Replace(command[1], command[2]);
+                }
+                    command = Console.ReadLine().Split('|').ToArray();
+            }
+            Console.WriteLine($"The decrypted message is: {input}");
+
+        }
+    }
+}
