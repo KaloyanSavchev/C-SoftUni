@@ -1,0 +1,12 @@
+using System;
+
+public class Program
+{
+	public static void Main()
+	{
+		string name = Console.ReadLine();
+		int people = int.Parse(Console.ReadLine());
+		int square = int.Parse(Console.ReadLine());
+		Console.WriteLine($"Town {name} has population of {people} and area {square } square km.");
+	}
+}
