@@ -1,0 +1,28 @@
+using System;
+
+namespace mini_exam_defining_simple_classes
+{
+    public class StartUp
+    {
+        static void Main(string[] args)
+        {
+            string data1 = Console.ReadLine();
+            string data2 = Console.ReadLine();
+            DateDifferenceCalculator modifier = new DateDifferenceCalculator();
+            Console.WriteLine(modifier.Calculate(data1, data2));
+        }
+    }
+    public class DateDifferenceCalculator
+    {
+        public string data1 { get; set; }
+        public string data2 { get; set; }
+        public int Calculate(string data1, string data2)
+        {
+            int[] data1Arr = data1.Split(' ').Select(int.Parse).ToArray();
+            DateTime data = new DateTime(data1Arr[0], data1Arr[1], data1Arr[2]);
+            int[] data2Arr = data2.Split(' ').Select(int.Parse).ToArray();
+            DateTime dataT = new DateTime(data2Arr[0], data2Arr[1], data2Arr[2]);
+            return Math.Abs((data - dataT).Days);
+        }
+    }
+}
