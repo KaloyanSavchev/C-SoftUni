@@ -17,10 +17,7 @@ namespace lambda
                 .ToArray();
             Console.WriteLine($"First best word: " + words.FirstOrDefault(w => w.Contains("B")));
             Console.WriteLine($"Last best word: " + words.LastOrDefault(w => w.Contains("B")));
-
-
-
-
         }
-    }   }       
+    }
+}       
 
