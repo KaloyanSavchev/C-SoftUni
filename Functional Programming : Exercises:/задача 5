@@ -1,0 +1,30 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace zadacha5._1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> nums = Console.ReadLine()
+                .Split(' ', StringSplitOptions.RemoveEmptyEntries)
+                .Select(int.Parse)
+                .ToList();
+            Action<List<int>> reverse = n => n.Reverse();
+            reverse(nums);
+            int num = int.Parse(Console.ReadLine());
+            Func<int, int, bool> filter = (n, num) => n % num == 0;
+            List<int> filteredNums = new List<int>();
+            for (int i = 0; i < nums.Count; i++)
+            {
+                if (!filter(nums[i], num))
+                {
+                    filteredNums.Add(nums[i]);
+                }
+            }
+            Console.WriteLine(string.Join(" ", filteredNums));
+        }
+    }
+}  
