@@ -1,0 +1,24 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace lambda
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] words = Console.ReadLine()
+               .Split(" ", StringSplitOptions.RemoveEmptyEntries)
+              .Skip(1) 
+              .Where(w => w.Length < 5)               
+               .Select(w => w + "s")
+               .OrderBy(w => w.Length)
+               .ThenBy(w => w)
+               .ToArray();
+            Console.WriteLine(String.Join(Environment.NewLine,words));
+        }
+}   }       
+
