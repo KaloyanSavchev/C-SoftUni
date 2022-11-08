@@ -1,0 +1,85 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace zadacha_2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+              int light = int.Parse(Console.ReadLine());
+            int timefomoving = int.Parse(Console.ReadLine());
+            int lenght = light;
+
+            Queue<string> allCars = new Queue<string>();
+
+            bool temp = false;
+            int passed = 0;
+            string input = Console.ReadLine();
+
+        while (input != "END")
+            {
+
+                if (input == "green")
+                {
+                    if (light == 0)
+                    {
+                        input = Console.ReadLine();
+                        continue;
+                    }
+
+                while (allCars.Count > 0)
+                    {
+                        if (allCars.Peek().Length < lenght)
+                        {
+                            lenght -= allCars.Peek().Length;
+                            allCars.Dequeue();
+                            passed++;
+                        }
+
+                     else
+                        {
+                            if (allCars.Peek().Length <= lenght + timefomoving)
+                            {
+                                passed++;
+                                allCars.Dequeue();
+                                break;
+                            }
+
+                            else
+                            {
+                                temp = true;
+                                Console.WriteLine("Crash on the crossroad!");
+                                int crashed = lenght + timefomoving;
+                                string car = allCars.Peek();
+                                string name = car.Substring(crashed, 1);
+                                Console.WriteLine($"{car} was hit at {name}.");
+                                return;
+                            }
+                        }
+                    }
+
+                    lenght = light;
+                }
+            else
+                {
+                    allCars.Enqueue(input);
+                }
+
+                input = Console.ReadLine();
+            }
+
+
+            if (!temp)
+            {
+                Console.WriteLine("No crash happened.");
+                Console.WriteLine($"{passed} total cars passed the crossroads.");
+            }
+
+        }
+    }
+}
+
