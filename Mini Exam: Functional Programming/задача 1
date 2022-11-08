@@ -1,0 +1,17 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string text = Console.ReadLine();
+            Action<string> print = text => text.Split().ToList().ForEach(f => Console.WriteLine($"Sir {f}"));
+            print(text);
+        }
+    }
+}
