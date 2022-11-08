@@ -1,0 +1,20 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace zadacha1._1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            
+            List<int> nums = Console.ReadLine()
+                .Split(' ', StringSplitOptions.RemoveEmptyEntries)
+                .Select(int.Parse)
+                .ToList();
+            Func<List<int>, int> num = n => n.Min();           
+            Console.WriteLine(num(nums));
+        }
+    }
+}
