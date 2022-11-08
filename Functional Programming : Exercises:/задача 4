@@ -1,0 +1,45 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace zadacha4._1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> nums = Console.ReadLine()
+                .Split(' ', StringSplitOptions.RemoveEmptyEntries)
+                .Select(int.Parse)
+                .ToList();
+            Action<List<int>> printing = n => Console.WriteLine(string.Join(" ", n));
+            
+            while (true)
+            {
+                string command = Console.ReadLine();
+
+                if (command == "end")
+                {
+                    break;
+                }
+                else if (command == "add")
+                {
+                    nums = nums.Select(n => n + 1).ToList();
+                }
+                else if (command == "multiply")
+                {
+                    nums = nums.Select(n => n * 2).ToList();
+                }
+                else if (command == "subtract")
+                {
+                    nums = nums.Select(n => n - 1).ToList();
+                }
+                else if (command == "print")
+                {
+                    printing(nums);
+                }
+            }
+           
+        }
+    }
+}
