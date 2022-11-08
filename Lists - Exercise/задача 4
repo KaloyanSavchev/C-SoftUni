@@ -1,0 +1,42 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp12
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> codeOfBomb = Console.ReadLine().Split().Select(int.Parse).ToList();
+            List<int> bombInformation = Console.ReadLine().Split().Select(int.Parse).ToList();
+            int Power = bombInformation[1];
+            int bombcode = bombInformation[0];
+            int place;
+            while ((place = codeOfBomb.IndexOf(bombcode)) >= 0 )
+            {
+                if (place + Power > codeOfBomb.Count && place  - Power < 0)
+                {
+                    codeOfBomb.Clear();
+                }
+                else if (place + Power >=  codeOfBomb.Count)
+                {
+                    codeOfBomb.RemoveRange(place - Power, Power + 1 + codeOfBomb.Count - 1 - place);
+                }
+                else if (place  - Power < 0)
+                {
+                    codeOfBomb.RemoveRange(0, place + 1 + Power);
+                }
+                else
+                {
+                    codeOfBomb.RemoveRange(place - Power, 2 * Power + 1);
+                }
+            }
+            Console.WriteLine(codeOfBomb.Sum());
+
+        }
+    }
+}
+
