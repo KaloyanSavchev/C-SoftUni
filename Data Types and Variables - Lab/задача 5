@@ -1,0 +1,25 @@
+	using System;
+
+	public class Program
+	{
+		public static void Main()
+		{
+				int n = int.Parse(Console.ReadLine());
+			for(int i = 1; i <= n; i++)
+			{
+				int last = i % 10;
+				int middle = (i/10) % 10;
+				int first =  middle / 10; 
+				int bigNum = last + middle + first ;
+				if( bigNum == 5 || bigNum == 7 || bigNum == 11)
+				{
+					Console.WriteLine($"{i} -> True");
+				}
+				else 
+				{
+				Console.WriteLine($"{i} -> False");
+				}
+			}
+
+		}
+	}
