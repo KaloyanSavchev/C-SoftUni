@@ -1,0 +1,26 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace lambda
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] words = Console.ReadLine()
+                .Split(' ')
+                .Where(w => w.Contains("est"))
+                .Select(x => x.ToUpper())
+                .ToArray();
+            Console.WriteLine($"First best word: " + words.FirstOrDefault(w => w.Contains("B")));
+            Console.WriteLine($"Last best word: " + words.LastOrDefault(w => w.Contains("B")));
+
+
+
+
+        }
+    }   }       
+
