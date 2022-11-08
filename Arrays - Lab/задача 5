@@ -1,0 +1,32 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int evensum = 0;
+            int oddsum = 0;
+            int[] num = Console.ReadLine().Split().Select(int.Parse).ToArray();
+            for (int i = 0; i < num.Length; i++)
+            {
+                int currentNum = num[i];
+                if (currentNum % 2 == 0)
+                {
+                    evensum += currentNum;
+                }
+                else
+                {
+                    oddsum += currentNum;
+                }
+            }
+            int difference = evensum - oddsum;
+            Console.WriteLine(difference);
+        }
+    }
+}
