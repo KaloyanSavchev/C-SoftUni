@@ -1,0 +1,59 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace zadacha3
+{       
+       
+namespace Test
+    {
+        class Program
+        {
+            static void Main(string[] args)
+            {
+
+                int people = int.Parse(Console.ReadLine()); //`chislo za proverka
+                string students = ""; // prazen string za uchenitsite
+                List<string> notinclass = new List<string>(); // 1vi string za otsustvie
+                List<string> inclass = new List<string>(); // 2ri string za prisustwashti
+
+                for (int i = 0; i < people; i++) 
+                {
+                    students = Console.ReadLine(); // prochitame za studentite
+                    List<string> namesofstudents = students.Split(' ').ToList(); // list za imenata na uchenicite 
+
+                    if (namesofstudents[2] == "here!") // ako prisustvat
+                    {
+                        inclass.Add(namesofstudents[0]); // dobavqme w 2riqt list 
+                        if (notinclass.Contains(namesofstudents[0])) //zamenqme ako sa go dali po kusno 
+                        {
+                            notinclass.RemoveAll(x => x == namesofstudents[0]); 
+                            Console.WriteLine($"{namesofstudents[0]} is in class!");
+                        }
+                    }
+                    else if (namesofstudents[2] == "not") // proverqvame ako ne prissustvat
+                    {
+                        if (notinclass.Contains(namesofstudents[0]))
+                        {
+                            Console.WriteLine($"{namesofstudents[0]} is already in the list!");
+                        }
+                        else
+                        {
+                            notinclass.Add(namesofstudents[0]);
+                        }
+                    }
+                }
+                foreach (string output in notinclass)
+                {
+                    Console.WriteLine(output); //izpisvame
+                }
+            }
+        }
+    }
+
+}
+    
+
+
