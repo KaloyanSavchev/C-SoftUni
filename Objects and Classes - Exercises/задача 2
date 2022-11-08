@@ -1,0 +1,36 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+namespace zadacha_2._2
+{
+    class Book
+    {
+        public string Name { get; set; }
+        public string Author { get; set; }
+        public int Page { get; set; }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<Book> booklist = new List<Book>();
+            string[] input = Console.ReadLine().Split(", ");
+            foreach (string part in input)
+            {
+                string[] info = part.Split('-');
+                Book book = new Book();
+                book.Name = info[0];
+                book.Author = info[1];
+                book.Page = int.Parse(info[2]);               
+                if (!booklist.Contains(book))
+                {
+                    booklist.Add(book);
+                }
+            }
+            string bookOutput = Console.ReadLine();
+            Book booksEnd = booklist.FirstOrDefault(c => c.Name == bookOutput);
+            Console.WriteLine($"Title: {booksEnd.Name} -> Written by: {booksEnd.Author} -> Volume: {booksEnd.Page}");
+        }
+    }
+}
