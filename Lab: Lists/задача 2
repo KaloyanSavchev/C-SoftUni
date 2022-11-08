@@ -1,0 +1,29 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp11
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> Firstlist = Console.ReadLine().Split().Select(int.Parse).ToList();
+            List <int> newlist = new List<int>();
+            for (int i = 0; i < Firstlist.Count/2 ; i++)
+            {
+                newlist.Add(Firstlist[i] + Firstlist[Firstlist.Count - 1 - i]);
+            }
+            if (Firstlist.Count % 2 == 1)
+            {
+                newlist.Add(Firstlist[Firstlist.Count / 2]);
+            }
+            Console.WriteLine(string.Join(" ", newlist));
+            
+        }
+
+       
+    }
+}
