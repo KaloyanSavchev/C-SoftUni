@@ -1,0 +1,45 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace zadacha_7
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = int.Parse(Console.ReadLine());
+
+            Dictionary<string, Dictionary<string, List<string>>> continents 
+            = new Dictionary<string, Dictionary<string, List<string>>>();
+            for (int i = 0; i < n; i++)
+            {
+                string[] token = Console.ReadLine().Split();
+                string continent = token[0];
+                string country = token[1];
+                string city = token[2];
+                if (!continents.ContainsKey(continent))
+                {
+                    continents[continent] = new Dictionary<string, List<string>>();
+                }
+                if (!continents[continent].ContainsKey(country))
+                {
+                    continents[continent][country] = new List<string>();
+                }
+                continents[continent][country].Add(city);
+            }
+            foreach (var names in continents)
+            {
+                string contName = names.Key;
+                Console.WriteLine($"{contName}:");
+                foreach (var name in names.Value)
+                {
+                    string countryName = name.Key;
+                    var cityName = name.Value;
+                    Console.WriteLine($" {countryName} -> {string.Join(", ", cityName)}");
+                }
+            }
+
+        }
+    }
+}
