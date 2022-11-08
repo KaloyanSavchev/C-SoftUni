@@ -1,0 +1,11 @@
+using System;
+					
+public class Program
+{
+	public static void Main()
+	{
+		decimal British = decimal.Parse(Console.ReadLine());
+		double convert = 1.31;
+		Console.WriteLine("{0:F3}", British * (decimal)convert);
+	}
+}
