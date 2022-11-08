@@ -1,0 +1,31 @@
+using System;
+using System.Linq;
+
+namespace class_and_object
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] firstInput = Console.ReadLine().Split("-").Select(int.Parse).ToArray();
+            int fday = firstInput[0];
+            int fmounth = firstInput[1];
+            int fyear = firstInput[2];
+            int[] secondInput = Console.ReadLine().Split("-").Select(int.Parse).ToArray();
+            int sday = secondInput[0];
+            int smounth = secondInput[1];
+            int syear = secondInput[2];
+            DateTime first = new DateTime(fyear, fmounth, fday);
+            DateTime second = new DateTime(syear, smounth, sday);
+            if (first.DayOfWeek == second.DayOfWeek)
+            {
+                Console.WriteLine("Yes");
+                Console.WriteLine(first.DayOfWeek);
+            }
+            else
+            {
+                Console.WriteLine("No");
+            }
+        }
+    }
+}
