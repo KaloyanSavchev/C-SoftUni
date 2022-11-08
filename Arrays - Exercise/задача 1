@@ -1,0 +1,27 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Array
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+           int allPeaople = 0;
+           int n = int.Parse(Console.ReadLine());
+            int[] people = new int[n];
+            for (int i = 0; i < people.Length; i++)
+            {
+                int peopleComing = int.Parse(Console.ReadLine());
+                people[i] = peopleComing;
+                allPeaople += peopleComing;
+            }
+            Console.WriteLine(string.Join(" ", people));
+            Console.WriteLine(allPeaople);
+            
+        }
+    }
+}
