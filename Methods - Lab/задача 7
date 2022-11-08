@@ -1,0 +1,64 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp5
+{
+    class Program
+    {
+        static void Main()
+
+        {
+            string input = Console.ReadLine();
+
+            GetMax(input);
+        }
+        static void GetMax(string input)
+        {
+            if (input == "int")
+            {
+                int a = int.Parse(Console.ReadLine());
+                int b = int.Parse(Console.ReadLine());
+                if (a > b)
+                {
+                    Console.WriteLine(a);
+                }
+                else
+                {
+                    Console.WriteLine(b);
+                }
+            }
+            if (input == "string")
+            {
+                string stringA = Console.ReadLine();
+                string stringB = Console.ReadLine();
+                int result = string.Compare(stringA, stringB);  //vzeto ot internet 
+                if (result == -1)
+                {
+                    Console.WriteLine(stringB);
+                }
+                else
+                {
+                    Console.WriteLine(stringA);
+                }
+            }
+            if (input == "char")
+            {
+                char charA = char.Parse(Console.ReadLine());
+                char charB = char.Parse(Console.ReadLine());
+                if (charA > charB)
+                {
+                    Console.WriteLine(charA);
+                }
+                else
+                {
+                    Console.WriteLine(charB);
+                }
+            }
+
+        }
+    }
+}
+
