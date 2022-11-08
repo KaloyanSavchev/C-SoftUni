@@ -1,0 +1,36 @@
+using System;
+using System.Collections.Generic;
+
+namespace ConsoleApp18
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            SortedDictionary<string, Dictionary<string, double>> shops =
+                 new SortedDictionary<string, Dictionary<string, double>>();
+
+
+            string line = Console.ReadLine();
+            while (line != "Revision")
+            {
+                string[] shopsInfo = line.Split(", ");
+                if (!shops.ContainsKey(shopsInfo[0]))
+                {
+                    shops[shopsInfo[0]] = new Dictionary<string, double>();
+                
+                }
+                shops[shopsInfo[0]].Add(shopsInfo[1], double.Parse(shopsInfo[2]));                           
+                line = Console.ReadLine();
+            }
+            foreach (var item in shops)
+            {
+                Console.WriteLine($"{item.Key}->");
+                foreach (var product in item.Value)
+                {
+                    Console.WriteLine($"Product: {product.Key}, Price: {product.Value}");
+                }
+            }
+        }
+    }
+}
