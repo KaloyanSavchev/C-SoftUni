@@ -1,0 +1,48 @@
+using System;
+using System.Numerics;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+namespace zadaacha_2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int start = 1;
+            int end = 100;
+            List<int> nums = new List<int>();
+            while (nums.Count < 10)
+            {
+                start = ReadNumeber(start, end);
+                if (start > 1)
+                {
+                    nums.Add(start);
+                }
+            }
+            Console.WriteLine(string.Join(", ", nums));
+        }
+
+        private static int ReadNumeber(int start, int end)
+        {
+            try
+            {
+                int number = int.Parse(Console.ReadLine());
+                if (number <= start || number >= end)
+                {
+                    throw new Exception($"Your number is not in range {start} - 100!");
+                }
+                return number;
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Invalid Number!");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return 1;
+        }
+    }
+}
