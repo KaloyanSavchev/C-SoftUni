@@ -1,0 +1,88 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+
+namespace zadacha_4._4
+{
+    class BankAccount
+    {
+        public int Id { get; set; }
+        public double Balance { get; set; }
+        public void Deposit(double sum)
+        {
+            this.Balance += sum;
+        }
+        public void WithDraw(double sum)
+        {
+            if (this.Balance >= sum)
+            {
+                this.Balance -= sum;
+            }
+            else
+            {
+                Console.WriteLine("Insufficient balance");
+            }
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<BankAccount> accounts = new List<BankAccount>();
+            string str;
+            while ((str = Console.ReadLine()) != "End")
+            {
+                string[] input = str.Split(' ');
+                string command = input[0].ToLower();
+                int id = int.Parse(input[1]);
+                switch (command)
+                {
+                    case "create":
+                        if (accounts.Any(a => a.Id == id))
+                        {
+                            Console.WriteLine("Account already exists");
+                        }
+                        else
+                        {
+                            BankAccount newAcc = new BankAccount();
+                            newAcc.Id = id;
+                            newAcc.Balance = 0;
+                            accounts.Add(newAcc);
+                        }
+                        break;
+                    case "deposit":
+                        double depSum = double.Parse(input[2]);
+                        BankAccount depAcc = accounts.FirstOrDefault(a => a.Id == id);
+                        if (depAcc == null)
+                        {
+                            Console.WriteLine("Account does not exist");
+                        }
+                        else
+                        {
+                            depAcc.Deposit(depSum);
+                        }
+                        break;
+                    case "withdraw":
+                        double withdrawSum = double.Parse(input[2]);
+                        BankAccount withdrawAcc = accounts.FirstOrDefault(a => a.Id == id);
+                        if (withdrawAcc == null)
+                        {
+                            Console.WriteLine("Account does not exist");
+                        }
+                        else
+                        {
+                            withdrawAcc.WithDraw(withdrawSum);
+                        }
+                        break;
+                    case "print":
+                        BankAccount account = accounts.FirstOrDefault(a => a.Id == id);
+                        Console.WriteLine(account == null
+                        ? "Account does not exist"
+                        : $"Account ID {id}, balance {account.Balance:f2}");
+                        break;
+                }
+            }
+        }
+    }
+}
