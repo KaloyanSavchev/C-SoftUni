@@ -1,0 +1,20 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace zadacha3
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] words = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries)
+                .Where(num => num[0] == num.ToUpper()[0])
+                .ToArray();
+            foreach (string word in words)
+            {
+                Console.WriteLine(word);
+            }
+        }
+    }
+}
