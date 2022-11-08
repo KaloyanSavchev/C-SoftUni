@@ -1,0 +1,35 @@
+using System;
+using System.Numerics;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+namespace zdacah_test_1
+{
+    class Employee
+    {
+        public string FirstName { get; set; }
+        public string  SecondName { get; set; }
+        public double Salary { get; set; }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int N = int.Parse(Console.ReadLine());
+            List<Employee> employeeList = new List<Employee>();
+            for (int i = 0; i < N; i++)
+            {
+                string[] input = Console.ReadLine().Split(" ");
+                Employee employee = new Employee();
+                employee.FirstName = input[0];
+                employee.SecondName = input[1];
+                employee.Salary = double.Parse(input[2]);
+                employeeList.Add(employee);
+            }
+            foreach (var employees in employeeList.OrderByDescending(x => x.Salary))
+            {
+                Console.WriteLine($"{employees.FirstName} {employees.SecondName}: {employees.Salary:F2}");
+            }
+        }
+    }
+}
