@@ -1,0 +1,43 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp4
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Grades(double.Parse(Console.ReadLine())); 
+        }
+
+        static void Grades(double points)
+        {
+            string gradeName = string.Empty;
+
+             if (points >= 2.00 && points <= 2.99)
+            {
+                gradeName = "Fail";
+            }
+             if(points >= 3 && points <= 3.49)
+            {
+                gradeName = "Poor";
+            }
+             if (points >= 3.50 && points <= 4.49)
+            {
+                gradeName = "Good";
+            }
+             if (points >= 4.50 && points <= 5.49)
+            {
+                gradeName = "Very good";
+            }
+             if (points >= 5.50 && points <= 6)
+            {
+                gradeName = "Excellent";
+            }
+            Console.WriteLine(gradeName);
+        }
+    }
+}
