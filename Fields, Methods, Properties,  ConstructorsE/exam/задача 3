@@ -1,0 +1,127 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Games
+{
+    public class StartUp
+    {
+        static void Main(string[] args)
+        {
+            int nCount = int.Parse(Console.ReadLine());
+
+            List<Squads> squads = new List<Squads>();
+
+            for (int i = 0; i < nCount; i++)
+            {
+                string[] n = Console.ReadLine().Split(new[] { '-' }, StringSplitOptions.RemoveEmptyEntries);
+
+                string currentCreator = n[0];
+                string currentSquadNeme = n[1];
+                bool isSquadNameExist = squads.Select(x => x.Squad).Contains(currentSquadNeme);
+                bool isCreatorExist = squads.Any(x => x.Name == currentCreator);
+                if (isSquadNameExist == false && isCreatorExist == false)
+                {
+                    Squads currentSquad = new Squads(currentSquadNeme, currentCreator);
+                    squads.Add(currentSquad);
+                    Console.WriteLine("{1} has has successfully created a new squad: {0}!", currentSquadNeme, currentCreator);
+                }
+                else if (isSquadNameExist)
+                {
+                    Console.WriteLine("That squad name is already taken.", currentSquadNeme);
+                }
+                else if (isCreatorExist)
+                {
+                    Console.WriteLine("{1} cannot set up another squad.", currentCreator);
+                }
+            }
+            while (true)
+            {
+                string playersForTeam = Console.ReadLine();
+
+                if (playersForTeam == "end of assignment")
+                {
+                    break;
+                }
+
+                string[] inputAssignment = playersForTeam.Split(new[] { '-', '>' }, StringSplitOptions.RemoveEmptyEntries);
+
+                string player = inputAssignment[0];
+
+                string ofPlayersTeam = inputAssignment[1];
+                bool isTeamExist = squads.Any(x => x.Squad == ofPlayersTeam);
+                bool isCreatorCheating = squads.Any(x => x.Name == player);
+                bool isAlreadyFen = squads.Any(x => x.Players.Contains(player));
+
+                if (isTeamExist && isCreatorCheating == false && isAlreadyFen == false)
+                {
+                    int indexOfTeam = squads
+                        .FindIndex(x => x.Squad == ofPlayersTeam);
+
+                    squads[indexOfTeam].Players.Add(player);
+                }
+                else if (isTeamExist == false)
+                {
+                    Console.WriteLine("The squad doesn't exist.", ofPlayersTeam);
+                }
+                else if (isAlreadyFen || isCreatorCheating)
+                {
+                    Console.WriteLine("The player is already member of a squad.", player, ofPlayersTeam);
+                }
+            }
+            List<Squads> teamWithMember = squads
+                .Where(x => x.Players.Count > 0)
+                .OrderByDescending(x => x.Players.Count)
+                .ThenBy(x => x.Squad)
+                .ToList();
+
+            List<Squads> notValidTeam = squads
+                .Where(x => x.Players.Count == 0)
+                .OrderBy(x => x.Squad)
+                .ToList();
+
+            foreach (var team in teamWithMember)
+            {
+                Console.WriteLine(team.Squad);
+                Console.WriteLine("- " + team.Name);
+                team.Players.Sort();
+                Console.WriteLine(string.Join(Environment.NewLine, team.Players.Select(x => "-- " + x)));
+            }
+
+            Console.WriteLine("Teams to disband:");
+
+            foreach (var team in notValidTeam)
+            {
+                Console.WriteLine(team.Squad);
+
+            }
+        }
+    }
+    public class Squads
+    {
+        private string squad;
+        private string name;
+        private List<string> players;
+        public string Squad
+        {
+            get { return this.squad; }
+            set { this.squad = value; }
+        }
+        public string Name
+        {
+            get { return this.name; }
+            set { this.name = value; }
+        }
+        public List<string> Players
+        {
+            get { return this.players; }
+            set { this.players = value; }
+        }
+        public Squads(string name, string squad)
+        {
+            Name = name;
+            Squad = squad;
+            Players = new List<string>();
+        }
+    }
+}
