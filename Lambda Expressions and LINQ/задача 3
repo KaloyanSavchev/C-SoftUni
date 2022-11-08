@@ -1,0 +1,34 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace lambda
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string name = Console.ReadLine();
+            if (isValid(name))
+            {
+                Console.WriteLine($"Hello, {name}!");
+                printAscii(name);
+            }
+            else
+            {
+                Console.WriteLine("Invalid name!");
+            }
+
+        }
+        static bool isValid(string name) => Char.IsUpper(name[0]) && name.Length >= 3 && !name.Any(Char.IsDigit);
+        static void printAscii(string name)
+        {
+            byte[] ASCIINames = Encoding.ASCII.GetBytes(name);
+            foreach (int letter in name)
+            {
+                Console.WriteLine(letter + 10);
+            }
+        }      }       }
+
