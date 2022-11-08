@@ -1,0 +1,46 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+
+namespace test_finalen
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string input = Console.ReadLine();
+            string[] command = Console.ReadLine().Split("<->").ToArray();
+            while (true)
+            {               
+                    if (command[0] == "Reverse")
+                    {
+                        char[] arraychar = input.ToCharArray();
+                        string reverse = String.Empty;
+                        for (int i = arraychar.Length - 1; i > -1; i--)
+                        {
+                            reverse += arraychar[i];
+                        }
+                        input = reverse;
+                        
+                    }
+                    if (command[0] == "Insert")
+                    {
+                        input = input.Insert(int.Parse(command[2]), command[1]);
+                        
+                    }
+                    if (command[0] == "Change")
+                    {
+                      int index = input.LastIndexOf(command[1]);
+                      input = input.Remove(index, 1).Insert(index, command[2]);                                              
+                    }
+                if (command[0] == "read it now")
+                {
+                    break;
+                }
+                command = Console.ReadLine().Split("<->").ToArray();               
+            }
+            Console.WriteLine($"You have a text message: {input}");
+        }
+    }
+}
