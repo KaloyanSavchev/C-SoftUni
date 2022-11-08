@@ -1,0 +1,39 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Dictionary<string, List<double>> grades = new Dictionary<string, List<double>>();
+            int n = int.Parse(Console.ReadLine());
+            for (int i = 0; i < n; i++)
+            {
+                var tokens = Console.ReadLine().Split();
+                string names = tokens[0];
+                double grade = double.Parse(tokens[1]);
+                if (!grades.ContainsKey(names))
+                {
+                    grades[names] = new List<double>();
+                }
+                grades[names].Add(grade);
+            }
+            foreach (var pair in grades)
+            {
+                string name = pair.Key;
+                var studentGrade = pair.Value;
+                double avrg = studentGrade.Average();
+                Console.Write($"{name} -> ");
+                foreach (var grade in studentGrade)
+                {
+                    Console.Write($"{grade:f2} ");
+
+                }
+                Console.WriteLine($"(avg: {avrg:0.00})");
+            }
+        }
+    }
+}
