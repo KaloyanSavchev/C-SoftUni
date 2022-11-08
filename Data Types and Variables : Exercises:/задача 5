@@ -1,0 +1,21 @@
+using System;
+
+namespace P06
+{
+    class P06
+    {
+        static void Main(string[] args)
+        {
+		int num = int.Parse(Console.ReadLine());
+		for(char i ='a'; i< 'a' + num; i++)
+		{
+			for(char c ='a'; c < 'a' + num; c++)
+			{
+				for(char j ='a'; j < 'a' + num; j++)
+				{
+				Console.WriteLine($"{i}{c}{j}");
+				}
+			}
+		}
+	}
+} }
