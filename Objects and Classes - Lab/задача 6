@@ -1,0 +1,46 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+
+namespace zadacha_5
+{
+    class Customer
+    {
+        public string FirstName { get; set; }
+        public string SecondName { get; set; }
+        public int Orders { get; set; }
+        public string Status { get; set; }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<Customer> customerList = new List<Customer>();
+            string input;
+            while ((input = Console.ReadLine()) != "end")
+            {
+                string[] info = input.Split();
+                string firstname = info[0];
+                string secondname = info[1];
+                int orders = int.Parse(info[2]);
+                string status = info[3];
+                Customer customer = new Customer();
+                customer.FirstName = firstname;
+                customer.SecondName = secondname;
+                customer.Orders = orders;
+                customer.Status = status;
+                customerList.Add(customer);
+            }
+            string sep = Console.ReadLine();
+            foreach (Customer customer in customerList)
+            {
+                if (customer.Status == sep)
+                {
+                    Console.WriteLine($"{customer.FirstName} {customer.SecondName} has {customer.Orders} orders.");
+                }                
+            }
+            //.Where(c => c.Status == sep)
+        }
+    }
+}
