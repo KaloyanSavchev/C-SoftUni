@@ -1,0 +1,26 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security;
+
+namespace zadacha2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Action<string> print = x => Console.WriteLine(x);
+            int num = int.Parse(Console.ReadLine());
+            List<string> input = Console.ReadLine().Split(' ').ToList();
+            for (int i = 0; i < input.Count; i++)
+            {
+                string word = input[i];
+                int count = word.Length;
+                if (count <= num)
+                {
+                    print(word);
+                }
+            }
+        }
+    }
+}
