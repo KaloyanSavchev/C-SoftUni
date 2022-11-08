@@ -1,0 +1,77 @@
+using System;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
+using System.Numerics;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+namespace zadacha2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string input = Console.ReadLine();
+            string patt = @"\#{1}[A-z]{3,}\#{2}[A-z]{3,}\#{1}|\@{1}[A-z]{3,}\@{2}[A-z]{3,}\@{1}";
+            Regex regex = new Regex(patt);
+            MatchCollection pairs = regex.Matches(input);
+            List<string> pair = new List<string>();
+            List<string> pair2 = new List<string>();
+            foreach (Match match in pairs)
+            {
+                pair.Add(match.ToString());
+            }
+            for (int i = 0; i < pair.Count; i++)
+            {
+                string counter = pair[i];
+                string firstpair = "";
+                string secondpair = "";
+                for (int h = 0; h < counter.Length / 2; h++)
+                {
+                    firstpair += counter[h];
+                }
+                for (int g = counter.Length - 1; g >= counter.Length / 2; g--)
+                {
+                    secondpair += counter[g];
+                }
+
+                if (firstpair == secondpair)
+                {
+                    pair2.Add(counter);
+                }
+            }
+            if (pair.Count > 0)
+            {
+                Console.WriteLine($"{pair.Count} word pairs found!");
+            }
+            else
+            {
+                Console.WriteLine("No word pairs found!");
+            }
+
+            List<string> final = new List<string>();
+
+            if (pair2.Count > 0)
+            {
+
+                Console.WriteLine("The mirror words are:");
+                string output = "";
+
+                foreach (var item in pair2)
+                {
+                    string outputpair1 = item.Substring(1, (item.Length / 2) - 2);
+                    string outputpair = item.Substring(item.Length / 2 + 1, (item.Length - ((item.Length / 2) + 2)));
+
+                    output = $"{outputpair1} <=> {outputpair}";
+                    final.Add(output);
+                }
+
+                Console.WriteLine($"{string.Join(", ", final)}");
+            }
+                else
+                {
+                    Console.WriteLine("No mirror words!");
+                }
+        }
+    }
+}
