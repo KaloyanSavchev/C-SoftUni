@@ -1,0 +1,27 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace lambda
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] numbers = Console.ReadLine()
+                .Split(',')
+                .Select(int.Parse)
+                .Where(n => n % 2 == 0)
+                .OrderBy(n => n)                
+                .ToArray();
+            int odd = numbers.Length >= 5 ? 5 : numbers.Length;
+            for (int i = 0; i < odd; i++)
+            {
+               Console.Write($"{numbers[i] + 1} ");                
+            }       
+        }
+    }
+}       
+
