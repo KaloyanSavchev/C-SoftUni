@@ -1,0 +1,37 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Array
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] input = Console.ReadLine().Split().Select(int.Parse).ToArray();
+           
+            for (int i = 0; i < input.Length - 1; i++)
+            {
+                bool biggerThanAllNext = true;
+                int firstNum = input[i];
+                for (int j = i + 1; j < input.Length; j++)
+                {
+                    if (firstNum <= input[j])
+                    {
+                        biggerThanAllNext = false;
+                    }
+                }
+                if (biggerThanAllNext == true)
+                {
+                    Console.Write(firstNum + " ");
+                }
+            }
+            Console.Write(input[input.Length - 1]);
+            Console.ReadLine();
+
+
+        }
+    }
+}
