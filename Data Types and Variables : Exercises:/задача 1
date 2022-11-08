@@ -1,0 +1,14 @@
+using System;
+
+public class Program
+{
+	public static void Main()
+	{
+		long firstNum = long.Parse(Console.ReadLine());
+		long secondNum = long.Parse(Console.ReadLine());
+		long thirdNum = long.Parse(Console.ReadLine());
+		long forthtNum = long.Parse(Console.ReadLine());
+		long result = ((firstNum + secondNum) / thirdNum) * forthtNum;
+		Console.WriteLine($"{result:F0}");  
+	}
+}
