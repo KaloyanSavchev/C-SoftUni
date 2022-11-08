@@ -1,0 +1,65 @@
+using System;
+using System.Numerics;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+namespace test_12
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string input = Console.ReadLine();
+            string[] command = Console.ReadLine().Split("<->").ToArray();
+            while (command[0] != "Read")
+            {
+                if (command[0] == "Backward")
+                {
+                    if (input.Contains(command[1]))
+                    {
+                        
+                        string substring = command[1];
+                        if (input.Contains(substring))
+                        {
+                            int counter = 0;
+                            if (counter <= 0)
+                            {
+
+
+                                string revers = string.Empty;
+                                int index = input.IndexOf(substring);
+                                input = input.Remove(index, substring.Length);
+                                for (int i = substring.Length - 1; i >= 0; i--)
+                                {
+                                    revers += substring[i];
+                                }
+
+                                input = input.Insert(index, revers);
+                                Console.WriteLine(input);
+                            }
+                                counter += 1;
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("error");
+                    }
+                }
+                if (command[0] == "Space")
+                {
+                    input = input.Insert(int.Parse(command[1]), " ");
+                    Console.WriteLine(input);
+                }
+                if (command[0] == "ReplaceAll")
+                {
+                    input = input.Replace(command[1], command[2]);
+                    Console.WriteLine(input);
+                }
+                command = Console.ReadLine().Split("<->").ToArray();
+            }
+            Console.WriteLine($"You have a secret text message: {input}");
+
+
+        }
+    }
+}
