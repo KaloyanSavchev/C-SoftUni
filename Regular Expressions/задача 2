@@ -1,0 +1,19 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+namespace zadacha
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string phones = Console.ReadLine();
+            string regex = @"(\+359([ -])2(\2)(\d{3})(\2)(\d{4}))\b";
+            MatchCollection valid = Regex.Matches(phones, regex);
+            string[] nums = valid.Cast<Match>().Select(a => a.Value.Trim()).ToArray();
+            Console.WriteLine(string.Join(", ", nums));
+
+        }
+    }
+}
