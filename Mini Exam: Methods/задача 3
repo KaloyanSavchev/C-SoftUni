@@ -1,0 +1,30 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp9
+{
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            int num = int.Parse(Console.ReadLine());// четем число
+            printOutput(num);//извикваме метода 
+            
+        }
+        static void printOutput(int input) // въвеждаме метод, с променлива/параметър input
+        {
+            for (int i = 0; i < input; i++) // цикъл в който го използваме за чертаене на n редове
+            {
+                for (int k = 0; k < input; k++) // цикъл в който го използваме за чертаене на n числа на ред
+                {                   
+                    Console.Write(input + " "); // езписваме числата n на брой едно след друго сус разтояние между тях
+                }
+                Console.WriteLine(); // всеки път щом изписваме един ред с числа "цъкаме enter" минаваме на нов ред
+            }
+        }
+    }
+}
