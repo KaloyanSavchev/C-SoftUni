@@ -1,0 +1,47 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp12
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> Firstplayer = Console.ReadLine().Split().Select(int.Parse).ToList();
+            List<int> Secondplayer = Console.ReadLine().Split().Select(int.Parse).ToList();
+            while (true)
+            {
+                if (Firstplayer[0] > Secondplayer[0])
+                {
+                    Firstplayer.Add(Firstplayer[0]);
+                    Firstplayer.Add(Secondplayer[0]);
+                }
+                else if(Secondplayer[0] > Firstplayer[0])
+                {
+                    Secondplayer.Add(Secondplayer[0]);
+                    Secondplayer.Add(Firstplayer[0]);
+                }
+                    Firstplayer.Remove(Firstplayer[0]);
+                    Secondplayer.Remove(Secondplayer[0]);
+               
+                if (Secondplayer.Count == 0)
+                {
+                    int points = Firstplayer.Sum();
+                    Console.WriteLine($"First player wins! Sum: {points}");
+                    break;
+                }
+                else if (Firstplayer.Count == 0)
+                {
+                    int points = Secondplayer.Sum();
+                    Console.WriteLine($"Second player wins! Sum: {points}");
+                    break;
+                }
+                
+            }
+        }
+    }
+}
+
