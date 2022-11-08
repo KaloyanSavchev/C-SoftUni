@@ -1,0 +1,42 @@
+using System;
+using System.Numerics;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+namespace zdacah_test_1
+{
+    class Employee
+    {
+        public string FirstName { get; set; }
+        public decimal Salary { get; set; }
+        public string Department { get; set; }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int N = int.Parse(Console.ReadLine());
+            List<Employee> employeeList = new List<Employee>();
+            for (int i = 0; i < N; i++)
+            {
+                string[] input = Console.ReadLine().Split(" ");
+                Employee employee = new Employee();
+                employee.FirstName = input[0];
+                employee.Department = input[2];
+                employee.Salary = decimal.Parse(input[1]);
+                employeeList.Add(employee);
+            }
+            var promenliva = employeeList.OrderByDescending(x => x.Salary);
+            var employeeBigSal = promenliva.First();
+            string dep = employeeBigSal.Department;
+            Console.WriteLine($"Highest Average Salary: {dep}");
+            foreach (var item in promenliva.Where(x => x.Department == dep))
+            {
+                Console.WriteLine($"{item.FirstName} {item.Salary:F2}");
+            }
+
+        }
+    }
+}
+
+
