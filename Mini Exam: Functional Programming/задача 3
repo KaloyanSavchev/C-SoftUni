@@ -1,0 +1,28 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security;
+
+namespace zadacha3
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+          
+
+            int num = int.Parse(Console.ReadLine());
+            string[] input = Console.ReadLine().Split();
+
+            Func<string, int, bool> words = (word, nums) =>
+            word.ToCharArray().Select(ch => (int)ch).Sum() >= num;
+
+            Func<string[], int, Func<string, int, bool>, string> biggestWord =
+                (arrray, intt, func) => arrray.FirstOrDefault(word => (func(word, num)));
+
+            string output = biggestWord(input, num, words);
+
+            Console.WriteLine(output);
+        }
+    }
+}
